@@ -1,5 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
+import { nanoid } from 'nanoid';
 
 export class App extends Component {
   state = {
