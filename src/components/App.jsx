@@ -15,6 +15,8 @@ import { nanoid } from 'nanoid';
 */
 
 export class App extends Component {
+  nameInputId = nanoid();
+
   state = {
     contacts: [],
     name: '',
@@ -25,10 +27,8 @@ export class App extends Component {
       <div>
         <h1>Phonebook</h1>
         <form>
-          <label>
-            <p>Name</p>
-            <input type="text" name="name" required />
-          </label>
+          <label htmlFor={this.nameInputId}>Name</label>
+          <input type="text" name="name" id={this.nameInputId} required />
           <br />
           <button type="submit">Add contact</button>
         </form>
