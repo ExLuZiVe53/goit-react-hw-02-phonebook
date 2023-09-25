@@ -19,9 +19,13 @@ class Form extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-
     this.props.onAddContact({ ...this.state });
     this.resetForm();
+    // const newContact = { name: this.state.name, number: this.state.number };
+    // this.props.onAddContact = {
+    //   name: this.state.name,
+    //   number: this.state.number,
+    // };
   };
 
   resetForm = () => {

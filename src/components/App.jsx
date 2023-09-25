@@ -19,32 +19,33 @@ import ContactList from './ContactList/ContactList';
 export class App extends Component {
   state = {
     contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+      // { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      // { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      // { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      // { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
   };
 
   // add new contact in to state
-  addContactForm = oneTask => {
+  addContactForm = data => {
     const searchName = this.state.contacts
-      .map(oneContact => oneContact.name)
-      .includes(oneTask.name);
+      .map(cont => cont.name)
+      .includes(data.name);
 
     if (searchName) {
-      alert(`${oneTask.name} is already in contacts`);
-    } else if (oneTask.name.length === 0) {
+      alert(`${data.name} is already in contacts`);
+    } else if (data.name.length === 0) {
       alert('Fields must be filled!');
     } else {
-      const contact = {
-        ...oneTask,
+      const addContact = {
+        ...data,
         id: nanoid(),
       };
+      console.log('data :>> ', data);
 
       this.setState(prevState => ({
-        contacts: { contacts: [...prevState.contacts, contact] },
+        contacts: { contacts: [...prevState.contacts, addContact] },
       }));
     }
   };
@@ -93,7 +94,7 @@ export class App extends Component {
         <h1 className="title">Phonebook</h1>
         <Form onAddContact={this.addContactForm} />
         <h2>Contacts</h2>
-        {/* {visibleContacts.length === 0 ? (
+        {visibleContacts.length === 0 ? (
           <p>Empty</p>
         ) : (
           <div>
@@ -103,8 +104,9 @@ export class App extends Component {
               onRemoveContact={this.removeContact}
             />
           </div>
-        )} */}
-        {visibleContacts.length > 1 && (
+        )}
+
+        {/* {visibleContacts.length > 1 && (
           <Filter value={filter} onChangeFilter={this.changeFilter} />
         )}
         {visibleContacts.length > 0 && (
@@ -112,7 +114,7 @@ export class App extends Component {
             contacts={visibleContacts}
             onRemoveContact={this.removeContact}
           />
-        )}
+        )} */}
       </div>
     );
   }
