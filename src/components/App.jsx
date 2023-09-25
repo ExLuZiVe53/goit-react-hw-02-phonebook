@@ -27,6 +27,7 @@ export class App extends Component {
     filter: '',
   };
 
+  // add new contact in to state
   addContactForm = oneTask => {
     const searchName = this.state.contacts
       .map(oneContact => oneContact.name)
@@ -43,23 +44,26 @@ export class App extends Component {
       };
 
       this.setState(prevState => ({
-        contacts: [...prevState.contacts, contact],
+        contacts: { contacts: [...prevState.contacts, contact] },
       }));
     }
   };
 
+  // add filter by contact
   changeFilter = filter => {
-    this.state({ filter });
+    this.setState({ filter });
   };
 
+  // filter includes toLowerCase()
   getVisibleContacts = () => {
     const { contacts, filter } = this.state;
 
     return contacts.filter(contacts =>
-      contacts.name.toLowerCase().includes(filter.toLowerCase())
+      contacts.name.toLowerCase().includes(filter.toLowerCase().trim())
     );
   };
 
+  // delete contact in this.state
   removeContact = contactId => {
     this.setState(prevState => {
       return {
@@ -73,8 +77,8 @@ export class App extends Component {
   // };
 
   render() {
-    // const { filter } = this.state;
-    // const visibleContacts = this.getVisibleContacts;
+    const { filter } = this.state;
+    const visibleContacts = this.getVisibleContacts;
     return (
       <div
         style={{
@@ -89,15 +93,23 @@ export class App extends Component {
         <h1 className="title">Phonebook</h1>
         <Form onAddContact={this.addContactForm} />
         <h2>Contacts</h2>
-        {this.getVisibleContacts.length > 1 && (
-          <Filter
-            value={this.state.filter}
-            onChangeFilter={this.changeFilter}
-          />
+        {/* {visibleContacts.length === 0 ? (
+          <p>Empty</p>
+        ) : (
+          <div>
+            <Filter value={filter} onChangeFilter={this.changeFilter} />
+            <ContactList
+              contacts={visibleContacts}
+              onRemoveContact={this.removeContact}
+            />
+          </div>
+        )} */}
+        {visibleContacts.length > 1 && (
+          <Filter value={filter} onChangeFilter={this.changeFilter} />
         )}
-        {this.getVisibleContacts.length > 0 && (
+        {visibleContacts.length > 0 && (
           <ContactList
-            contacts={this.getVisibleContacts}
+            contacts={visibleContacts}
             onRemoveContact={this.removeContact}
           />
         )}

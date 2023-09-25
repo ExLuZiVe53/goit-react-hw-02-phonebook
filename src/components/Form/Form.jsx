@@ -31,7 +31,7 @@ class Form extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label htmlFor={this.nameInputId}>
+        <label>
           Name
           <input
             type="text"
@@ -39,10 +39,12 @@ class Form extends Component {
             // id={this.nameInputId}
             value={this.state.name}
             onChange={this.handleChange}
+            pattern="^[a-zA-Zа-яА-Я]+(([' \\-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            required
           />
         </label>
 
-        <label htmlFor={this.nameInputId}>
+        <label>
           Number
           <input
             type="tel"
@@ -50,6 +52,8 @@ class Form extends Component {
             // id={this.nameInputId}
             value={this.state.number}
             onChange={this.handleChange}
+            pattern="\\+?\\d{1,4}?[ .\\-\\s]?\\(?\\d{1,3}?\\)?[ .\\-\\s]?\\d{1,4}[ .\\-\\s]?\\d{1,4}[ .\\-\\s]?\\d{1,9}"
+            required
           />
         </label>
 
