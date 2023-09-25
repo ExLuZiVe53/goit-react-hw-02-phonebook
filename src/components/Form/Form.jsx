@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
+// import PropTypes from 'prop-types';
 
 class Form extends Component {
   nameInputId = nanoid();
 
   state = {
-    contacts: [],
     name: '',
     number: '',
   };
@@ -17,10 +17,10 @@ class Form extends Component {
     });
   };
 
-  handleAddContact = event => {
+  handleSubmit = event => {
     event.preventDefault();
-    console.log('this.state :>> ', this.state);
-    this.props.onAddContact(this.state);
+
+    this.props.onAddContact({ ...this.state });
     this.resetForm();
   };
 
@@ -30,7 +30,7 @@ class Form extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleAddContact}>
+      <form onSubmit={this.handleSubmit}>
         <label htmlFor={this.nameInputId}>Name</label>
         <br />
         <input
@@ -58,5 +58,11 @@ class Form extends Component {
     );
   }
 }
+
+// Form.propTypes = {
+//   onAddContact: PropTypes.function.isRequired,
+//   name: PropTypes.string.isRequired,
+//   number: PropTypes.string.isRequired,
+// };
 
 export default Form;
