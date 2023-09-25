@@ -1,6 +1,8 @@
-import React from 'react';
-import { Component } from 'react';
+import React, { Component } from 'react';
 import Form from './Form/Form';
+import { nanoid } from 'nanoid';
+import { Filter } from './Filter/Filter';
+import ContactList from './ContactList/ContactList';
 
 /*
 Алгоритм роботи з формами:
@@ -46,20 +48,47 @@ export class App extends Component {
     }
   };
 
-  formAddHandler = data => {
-    console.log('data :>> ', data);
+  onChangeFilter = filter => {
+    this.state({ filter });
   };
 
+  getVisibleContacts = () => {
+    const { contacts, filter } = this.state;
+
+    return contacts.filter(contacts =>
+      contacts.name.toLowerCase().includes(filter.toLowerCase())
+    );
+  };
+
+  removeContact = contactId => {
+    this.setState(prevState => {
+      return {
+        contacts: prevState.contacts.filter(({ id }) => id !== contactId),
+      };
+    });
+  };
+
+  // formAddHandler = data => {
+  //   console.log('data :>> ', data);
+  // };
+
   render() {
+    const { filter } = this.state;
+    const visibleContacts = this.getVisibleContacts;
     return (
       <div className="wrapper">
         <h1 className="title">Phonebook</h1>
-        <Form onAddContact={this.formAddHandler} />
-        <ul>
-          <li>Rosie Simpson</li>
-          <li>Hermonie Cline</li>
-          <li>Eden Clements</li>
-        </ul>
+        <Form onAddContact={this.addContactForm} />
+        <h2>Contacts</h2>
+        {visibleContacts.length > 1 && (
+          <Filter value={filter} onChangeFilter={this.onChangeFilter} />
+        )}
+        {visibleContacts.length > 0 && (
+          <ContactList
+            contacts={visibleContacts}
+            onRemoveContact={this.removeContact}
+          />
+        )}
       </div>
     );
   }
