@@ -1,6 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
-import { nanoid } from 'nanoid';
+import Form from './Form/Form';
 
 /*
 Алгоритм роботи з формами:
@@ -15,23 +15,15 @@ import { nanoid } from 'nanoid';
 */
 
 export class App extends Component {
-  nameInputId = nanoid();
-
-  state = {
-    contacts: [],
-    name: '',
+  formAddHandler = data => {
+    console.log('data :>> ', data);
   };
 
   render() {
     return (
-      <div>
-        <h1>Phonebook</h1>
-        <form>
-          <label htmlFor={this.nameInputId}>Name</label>
-          <input type="text" name="name" id={this.nameInputId} required />
-          <br />
-          <button type="submit">Add contact</button>
-        </form>
+      <div className="wrapper">
+        <h1 className="title">Phonebook</h1>
+        <Form onAddContact={this.formAddHandler} />
         <ul>
           <li>Rosie Simpson</li>
           <li>Hermonie Cline</li>
