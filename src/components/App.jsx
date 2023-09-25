@@ -48,7 +48,7 @@ export class App extends Component {
     }
   };
 
-  onChangeFilter = filter => {
+  changeFilter = filter => {
     this.state({ filter });
   };
 
@@ -73,19 +73,31 @@ export class App extends Component {
   // };
 
   render() {
-    const { filter } = this.state;
-    const visibleContacts = this.getVisibleContacts;
+    // const { filter } = this.state;
+    // const visibleContacts = this.getVisibleContacts;
     return (
-      <div className="wrapper">
+      <div
+        style={{
+          display: 'block',
+          justifyContent: 'center',
+          alignItems: 'center',
+          fontSize: 40,
+          color: '#010101',
+        }}
+        className="wrapper"
+      >
         <h1 className="title">Phonebook</h1>
         <Form onAddContact={this.addContactForm} />
         <h2>Contacts</h2>
-        {visibleContacts.length > 1 && (
-          <Filter value={filter} onChangeFilter={this.onChangeFilter} />
+        {this.getVisibleContacts.length > 1 && (
+          <Filter
+            value={this.state.filter}
+            onChangeFilter={this.changeFilter}
+          />
         )}
-        {visibleContacts.length > 0 && (
+        {this.getVisibleContacts.length > 0 && (
           <ContactList
-            contacts={visibleContacts}
+            contacts={this.getVisibleContacts}
             onRemoveContact={this.removeContact}
           />
         )}
