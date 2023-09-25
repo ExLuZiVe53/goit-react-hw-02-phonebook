@@ -31,28 +31,28 @@ class Form extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label htmlFor={this.nameInputId}>Name</label>
-        <br />
-        <input
-          type="text"
-          name="name"
-          id={this.nameInputId}
-          value={this.state.name}
-          onChange={this.handleChange}
-          required
-        />
-        <br />
-        <label htmlFor={this.nameInputId}>Number</label>
-        <br />
-        <input
-          type="tel"
-          name="number"
-          id={this.nameInputId}
-          value={this.state.number}
-          onChange={this.handleChange}
-          required
-        />
-        <br />
+        <label htmlFor={this.nameInputId}>
+          Name
+          <input
+            type="text"
+            name="name"
+            // id={this.nameInputId}
+            value={this.state.name}
+            onChange={this.handleChange}
+          />
+        </label>
+
+        <label htmlFor={this.nameInputId}>
+          Number
+          <input
+            type="tel"
+            name="number"
+            // id={this.nameInputId}
+            value={this.state.number}
+            onChange={this.handleChange}
+          />
+        </label>
+
         <button type="submit">Add contact</button>
       </form>
     );
