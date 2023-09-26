@@ -21,6 +21,7 @@ class Form extends Component {
     event.preventDefault();
     this.props.onAddContact({ ...this.state });
     this.resetForm();
+    console.log('this.state :>> ', this.state);
     // const newContact = { name: this.state.name, number: this.state.number };
     // this.props.onAddContact = {
     //   name: this.state.name,

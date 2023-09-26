@@ -4,18 +4,6 @@ import { nanoid } from 'nanoid';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
 
-/*
-Алгоритм роботи з формами:
-
-1. Розмітити HTML самої форми.
-2. Створити стейт, поля якого будуть збігатися з назвами атрибутів "name" у інпутів.
-3. Прив`язати поля стейту до атрибуту "value" відповідних інпутів.
-4. Створити обробник подій, який буде обробляти поля вводу і встановлювати значення в стейт.
-5. Обробник подій, прикріпити до події onChange у кожного інпуту.
-6. Додати обробник сабміту форми, де ми згрупуємо фінальні дані та надішлемо їх назовні.
-
-*/
-
 export class App extends Component {
   state = {
     contacts: [
@@ -45,7 +33,7 @@ export class App extends Component {
       console.log('data :>> ', data);
 
       this.setState(prevState => ({
-        contacts: { contacts: [...prevState.contacts, addContact] },
+        contacts: [...prevState.contacts, addContact],
       }));
     }
   };
@@ -59,8 +47,8 @@ export class App extends Component {
   getVisibleContacts = () => {
     const { contacts, filter } = this.state;
 
-    return contacts.filter(contacts =>
-      contacts.name.toLowerCase().includes(filter.toLowerCase().trim())
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase().trim())
     );
   };
 
@@ -79,7 +67,7 @@ export class App extends Component {
 
   render() {
     const { filter } = this.state;
-    const visibleContacts = this.getVisibleContacts;
+    const visibleContacts = this.getVisibleContacts();
     return (
       <div
         style={{

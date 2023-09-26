@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 export const ContactList = ({ contacts, onRemoveContact }) => (
   <ul className="ul">
-    console.log(contacts)
     {contacts.map(contact => (
       <li className="li" key={contact.id}>
         <span>{contact.name}</span>
