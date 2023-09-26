@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
+import styles from './Form.module.css';
 // import PropTypes from 'prop-types';
 
 class Form extends Component {
@@ -35,8 +36,8 @@ class Form extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
+      <form onSubmit={this.handleSubmit} className={styles.FormWrapper}>
+        <label className={styles.FormLabel}>
           Name
           <input
             type="text"
@@ -46,10 +47,11 @@ class Form extends Component {
             onChange={this.handleChange}
             pattern="^[a-zA-Zа-яА-Я]+(([' \\-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             required
+            className={styles.FormInput}
           />
         </label>
 
-        <label>
+        <label className={styles.FormLabel}>
           Number
           <input
             type="tel"
@@ -59,6 +61,7 @@ class Form extends Component {
             onChange={this.handleChange}
             pattern="\\+?\\d{1,4}?[ .\\-\\s]?\\(?\\d{1,3}?\\)?[ .\\-\\s]?\\d{1,4}[ .\\-\\s]?\\d{1,4}[ .\\-\\s]?\\d{1,9}"
             required
+            className={styles.FormInput}
           />
         </label>
 

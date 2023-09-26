@@ -3,6 +3,7 @@ import Form from './Form/Form';
 import { nanoid } from 'nanoid';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
+import styles from './App.module.css';
 
 export class App extends Component {
   state = {
@@ -70,14 +71,14 @@ export class App extends Component {
     const visibleContacts = this.getVisibleContacts();
     return (
       <div
-        style={{
-          display: 'block',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: 40,
-          color: '#010101',
-        }}
-        className="wrapper"
+        // style={{
+        //   display: 'block',
+        //   justifyContent: 'center',
+        //   alignItems: 'center',
+        //   fontSize: 40,
+        //   color: '#010101',
+        // }}
+        className={styles.Wrapper}
       >
         <h1 className="title">Phonebook</h1>
         <Form onAddContact={this.addContactForm} />
