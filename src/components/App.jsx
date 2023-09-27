@@ -70,21 +70,12 @@ export class App extends Component {
     const { filter } = this.state;
     const visibleContacts = this.getVisibleContacts();
     return (
-      <div
-        // style={{
-        //   display: 'block',
-        //   justifyContent: 'center',
-        //   alignItems: 'center',
-        //   fontSize: 40,
-        //   color: '#010101',
-        // }}
-        className={styles.Wrapper}
-      >
+      <div className={styles.Wrapper}>
         <h1 className="title">Phonebook</h1>
         <Form onAddContact={this.addContactForm} />
         <h2>Contacts</h2>
 
-        {visibleContacts.length === 0 ? (
+        {/* {visibleContacts.length === 0 ? (
           <p>Empty</p>
         ) : (
           <div>
@@ -94,9 +85,9 @@ export class App extends Component {
               onRemoveContact={this.removeContact}
             />
           </div>
-        )}
+        )} */}
 
-        {/* {visibleContacts.length > 1 && (
+        {visibleContacts.length > 1 && (
           <Filter value={filter} onChangeFilter={this.changeFilter} />
         )}
         {visibleContacts.length > 0 && (
@@ -104,7 +95,7 @@ export class App extends Component {
             contacts={visibleContacts}
             onRemoveContact={this.removeContact}
           />
-        )} */}
+        )}
       </div>
     );
   }
