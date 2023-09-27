@@ -87,15 +87,12 @@ export class App extends Component {
           </div>
         )} */}
 
-        {visibleContacts.length > 1 && (
-          <Filter value={filter} onChangeFilter={this.changeFilter} />
-        )}
-        {visibleContacts.length > 0 && (
-          <ContactList
-            contacts={visibleContacts}
-            onRemoveContact={this.removeContact}
-          />
-        )}
+        <Filter value={filter} onChangeFilter={this.changeFilter} />
+
+        <ContactList
+          contacts={visibleContacts}
+          onRemoveContact={this.removeContact}
+        />
       </div>
     );
   }
