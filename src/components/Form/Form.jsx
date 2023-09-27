@@ -48,6 +48,7 @@ class Form extends Component {
             pattern="^[a-zA-Zа-яА-Я]+(([' \\-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             required
             className={styles.FormInput}
+            placeholder="Enter name"
           />
         </label>
 
@@ -62,10 +63,13 @@ class Form extends Component {
             pattern="\\+?\\d{1,4}?[ .\\-\\s]?\\(?\\d{1,3}?\\)?[ .\\-\\s]?\\d{1,4}[ .\\-\\s]?\\d{1,4}[ .\\-\\s]?\\d{1,9}"
             required
             className={styles.FormInput}
+            placeholder="xxx-xxx-xxx-xxx"
           />
         </label>
 
-        <button type="submit">Add contact</button>
+        <button className={styles.ButtonForm} type="submit">
+          Add contact
+        </button>
       </form>
     );
   }
