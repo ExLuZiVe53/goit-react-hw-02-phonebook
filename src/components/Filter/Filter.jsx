@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 export function Filter({ value, onChangeFilter }) {
   return (
-    <div>
+    <div className={styles.FilterWrap}>
       Find contacts by name
       <input
         type="text"
